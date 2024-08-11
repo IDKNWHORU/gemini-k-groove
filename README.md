@@ -38,7 +38,49 @@ To get started with K-Groove, follow these steps:
 2. Install the Jupyter Notebook extension for VSCode.
 3. Locate the 'expert-dance.mp4' file, which contains a portion of NewJeans' "How Sweet" dance.
 4. Practice the choreography shown in the video, focusing on the approximately 19-second segment.
-5. Open and run the 'Untitled-1.ipynb' file in VSCode.
+5. Record your own dance performance, mimicking the choreography from the expert video.
+6. Save your dance video as 'user_dance.mp4' and place it in the same directory as the project files.
+7. Set up the [GEMINI_API_KEY](https://aistudio.google.com/app/apikey) environment variable (see instructions below).
+8. Open and run the 'Untitled-1.ipynb' file in VSCode.
+
+### Setting up the GEMINI_API_KEY environment variable
+
+Before running the application, you need to set up the GEMINI_API_KEY environment variable. Follow the instructions for your operating system:
+
+#### Windows:
+
+1. Open the Start menu and search for "Environment Variables".
+2. Click on "Edit the system environment variables".
+3. In the System Properties window, click on the "Environment Variables" button.
+4. Under "User variables", click "New".
+5. Set the Variable name as GEMINI_API_KEY and the Variable value as your actual Gemini API key.
+6. Click "OK" to save.
+
+Alternatively, you can use the command prompt:
+
+#### macOS and Linux:
+
+1. Open your terminal.
+2. Open your shell configuration file (e.g., ~/.bash_profile, ~/.zshrc, or ~/.bashrc) in a text editor.
+3. Add the following line at the end of the file: `export GEMINI_API_KEY=<your-api-key-here>`
+4. Save the file and exit the editor.
+5. Run the following command to apply the changes:
+
+### Creating Pose Images and Videos
+
+If you want to generate pose images and videos:
+
+1. Run the 'Untitled-2.ipynb' file in VSCode.
+2. This will create image files in the `expert` and `user` folders.
+3. It will also generate pose videos: 'expert_pose.mp4' and 'user_pose.mp4'.
+
+Note: Errors may occur during image file generation. If an error occurs after creating expert image files, follow these steps:
+- Restart the kernel
+- Run from the beginning, but skip this part:
+  ```python
+  with create_pose_landmarker() as landmarker:
+      print("Processing expert video...")
+      user_poses = process_video(expert_video, landmarker, show_first_n_frames=720, path="expert")
 
 ## Milestone
  
